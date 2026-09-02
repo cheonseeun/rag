@@ -1,0 +1,96 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "1. data_prep (finance)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/data_prep.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "args": ["--domain", "finance", "--corpus-scope", "all"]
+      },
+      {
+        "name": "2. encoders sanity check",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/encoders.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "args": ["bge-m3", "kure-v1", "me5-large", "me5-large-instruct",
+                 "jina-v3", "qwen3-embed-0.6b"]
+      },
+      {
+        "name": "3. run_retrieval (all models)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run_retrieval.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "args": ["--models", "bge-m3", "kure-v1", "me5-large", "me5-large-instruct",
+                 "jina-v3", "qwen3-embed-0.6b", "--top-k", "5"]
+      },
+      {
+        "name": "3b. run_retrieval (단일 모델 디버그)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run_retrieval.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "args": ["--models", "bge-m3", "--top-k", "5"]
+      },
+      {
+        "name": "4. generate --gold",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/generate.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "envFile": "${workspaceFolder}/.env",
+        "args": ["--models", "bge-m3", "kure-v1", "me5-large", "me5-large-instruct",
+                 "jina-v3", "qwen3-embed-0.6b", "--gold"]
+      },
+      {
+        "name": "5a. generate (5건만 시험)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/generate.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "envFile": "${workspaceFolder}/.env",
+        "args": ["--models", "bge-m3", "--top-k", "5", "--limit", "5"]
+      },
+      {
+        "name": "5b. generate (전체)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/generate.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "envFile": "${workspaceFolder}/.env",
+        "args": ["--models", "bge-m3", "kure-v1", "me5-large", "me5-large-instruct",
+                 "jina-v3", "qwen3-embed-0.6b", "--top-k", "5"]
+      },
+      {
+        "name": "6. judge",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/judge.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "envFile": "${workspaceFolder}/.env",
+        "args": ["--models", "bge-m3", "kure-v1", "me5-large", "me5-large-instruct",
+                 "jina-v3", "qwen3-embed-0.6b"]
+      },
+      {
+        "name": "7. aggregate",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/aggregate.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "args": ["--models", "bge-m3", "kure-v1", "me5-large", "me5-large-instruct",
+                 "jina-v3", "qwen3-embed-0.6b"]
+      }
+    ]
+  }
